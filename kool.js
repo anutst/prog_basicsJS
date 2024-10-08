@@ -772,6 +772,9 @@ console.log("Pindala: " + pindAla);
    - git status -s ja tuleb ?? file1.js (New untracked file)
 
 */
+/* 02.10 youtube video (Arrays, spread operator,rest parameters,JavaScript Objects,What is THIS,Constructors)
+
+*/
 
 //Kõik ülesanded ilma kommentaarideta:
 
@@ -1078,3 +1081,193 @@ const bodyArrowFunction = (day) => (day === 'Wednesday' ? true : false);
 console.log(bodyArrowFunction('Thursday')); 
 
 
+// 02.10 ARRAYS
+
+let marjad = ["mustikas", "sinikas", "pohl"];
+
+marjad[3] = "murakas";
+
+console.log(marjad);
+console.log(marjad[0]);
+console.log(marjad[1]);
+console.log(marjad[2]);
+console.log(marjad[3]);
+
+
+let puuviljad = ["apelsin", "sidrun", "mandariin"];
+//puuviljad.push("avokaado");
+//puuviljad.pop();
+//puuviljad.unshift("mango");
+//puuviljad.shift();
+
+console.log(puuviljad);
+console.log(puuviljad[0]);
+console.log(puuviljad[1]);
+console.log(puuviljad[2]);
+
+let numOfPuuviljad = puuviljad.length;
+let index = puuviljad.indexOf("apelsin");
+// let index = puuviljad.indexOf("kaheksa"); Tuleb -1 kuna sellist elementi ei leitud. 
+console.log(numOfPuuviljad);
+console.log(index);
+
+for (let i = 0; i < puuviljad.length; i+=2){
+  console.log(puuviljad[i]);
+}
+
+// 02.10 SPREAD OPERATOR
+
+let numbrid = [1, 2, 3, 4, 5];
+let maximum = Math.max(...numbrid);
+let minimum = Math.min(...numbrid);
+console.log(maximum);
+console.log(minimum);
+
+let username = "Anu Tõiste";
+let letters = [...username].join("-");
+console.log(letters);
+
+let fruits = ["ploom", "kirss", "murel"];
+let vegetables = ["porgandid", "seller", "kartulid"];
+
+let foods = [...fruits, ...vegetables, "munad", "piim"];
+console.log(fruits);
+console.log(foods);
+
+// 02.10 REST PARAMETERS
+
+function openFridge(...söögid){
+console.log(söögid);
+}
+
+function getFood(...söögid){
+  return söögid;
+}
+
+const söök1 = "pitsa";
+const söök2 = "friikad";
+const söök3 = "kebab";
+const söök4 = "pita";
+const söök5 = "nuudlid";
+
+// openFridge(söök1, söök2, söök3, söök4, söök5);
+
+const söögid = getFood(söök1, söök2, söök3, söök4, söök5);
+console.log(söögid);
+
+function sum(...numbers){
+
+  let result = 0;
+  for(let number of numbers){
+      result += number;
+  }
+  return result;
+}
+const total = sum(1, 2, 3, 4, 5);
+console.log(`Your total is $${total}`);
+
+function getAverage(...numbers){
+
+  let result = 0;
+  for(let number of numbers){
+      result += number;
+  }
+  return result / numbers.length;
+}
+
+const total1 = getAverage(75, 100, 85, 90, 50);
+console.log(total1);
+
+
+function combineStrings (...strings){
+return strings.join(" ");
+}
+const fullName = combineStrings("Mr.", "Spongebob", "Squarepants", "III");
+console.log(fullName);
+
+
+
+// 02.10 JAVASCRIPT OBJECTS
+
+const person1 = {
+  firstName: "Anu",
+  lastName: "Tõiste",
+  age: 23,
+  isEmployed: false,
+  sayHello: function(){console.log("Tsau, ma olen Anu")}
+}
+
+const person2 = {
+  firstName: "Manna",
+  lastName: "Liisa",
+  age: 18,
+  isEmployed: true,
+  sayHello: function(){console.log("Tsau, ma olen Manna")}
+
+}
+
+person1.sayHello();
+console.log(person1.firstName);
+console.log(person1.lastName);
+console.log(person1.age);
+console.log(person1.isEmployed);
+
+person2.sayHello();
+console.log(person2.firstName);
+console.log(person2.lastName);
+console.log(person2.age);
+console.log(person2.isEmployed);
+
+// 02.10 WHAT IS THIS
+
+const isik1 = {
+  name: "Ly",
+  favFood: "sushit",
+  sayHello: function(){console.log(`Hei! Ma olen ${this.favFood}`)},
+  eat: function(){console.log(`${this.name} sööb ${this.favFood}`)}
+}
+
+
+const isik2 = {
+  name: "Kaspar",
+  favFood: "friikartuleid",
+  sayHello: function(){console.log(`Hei! Ma olen ${this.favFood}`)},
+  eat: function(){console.log(`${this.name} sööb ${this.favFood}`)}
+}
+
+isik1.eat();
+isik2.eat();
+
+console.log(this);
+
+// 02.10 CONSTRUCTORS
+
+function Car(make, model, year, color){
+  this.make = make,
+  this.model = model,
+  this.year = year,
+  this.color = color,
+  this.drive = function(){console.log(`You drive the ${this.model}`)}
+}
+
+const car1 = new Car("Audi", "A3", 1996, "black");
+const car2 = new Car("Bmw", "e46", 1999, "white");
+const car3 = new Car("Dodge", "Charger", 2020, "pink");
+
+
+console.log(car1.make);
+console.log(car1.model);
+console.log(car1.year);
+console.log(car1.color);
+
+console.log(car2.make);
+console.log(car2.model);
+console.log(car2.year);
+console.log(car2.color);
+
+console.log(car3.make);
+console.log(car3.model);
+console.log(car3.year);
+console.log(car3.color);
+
+car1.drive();
